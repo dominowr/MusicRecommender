@@ -33,16 +33,18 @@
 						<div class="inner">
 							<header>
 								<h1>This is Music Recommender.<br/></h1>
-								<p>Our music recommendation application utilizes machine learning algorithms to analyze
-									user preferences and behavior, providing personalized music suggestions. Users can
-									explore a wide range of genres and artists, tailored to their tastes. By integrating
-									with Spotify, our application offers seamless access to a vast library of songs and
-									albums. Whether discovering new artists or rediscovering old favorites, our
-									application delivers a curated music experience tailored to each individual user</p>
+								<p>"Our music recommendation application employs sophisticated machine learning
+									algorithms to analyze user preferences and behaviors, delivering personalized
+									music suggestions. Users can explore a diverse range of genres and artists
+									tailored to their tastes. Through seamless integration with Spotify, our application
+									provides effortless access to an extensive library of songs and albums.
+									Whether discovering new artists or rediscovering old favorites, our application
+									offers a curated music experience tailored to each individual user."</p>
 							</header>
 							<section>
 								<h2>Log in</h2>
 								<form method="post" action="#">
+									{% csrf_token %}
 									<div class="fields">
 										<div class="field half">
 											<input type="text" name="name" id="name" placeholder="Name"/>
