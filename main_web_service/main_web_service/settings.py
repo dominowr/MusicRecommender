@@ -129,8 +129,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = 'auth/login'
-LOGIN_REDIRECT_URL = 'auth/login'
 
 # Load Auth0 application settings into memory
 ENV_FILE = find_dotenv()
