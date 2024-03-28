@@ -56,11 +56,22 @@
             </header>
             <br>
             <section>
-                <form method="GET">
-                        <button type="submit" class="button primary">Connect</button>
+                <form method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="button primary">Connect</button>
                 </form>
             </section>
         </div>
+        				<h1>Auth0 Example</h1>
+				{% if session %}
+    <h1>Welcome {{session.userinfo.name}}!</h1>
+    <p><a href="{% url 'auth0:logout' %}">Logout</a></p>
+    <div><pre>{{pretty}}</pre></div>
+    {% else %}
+    <h1>Welcome Guest</h1>
+    <p><a href="{% url 'auth0:login' %}">Login</a></p>
+    {% endif %}
+				 Footer
     </div>
 
     <!-- Footer -->
