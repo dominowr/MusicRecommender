@@ -60,23 +60,13 @@
                     offers a curated music experience tailored to each individual user.</p>
             </header>
             <section>
-                <form method="POST">
-                    {% csrf_token %}
-                    <button type="submit" class="button primary">Explore</button>
-                </form>
+                <ul class="actions">
+                    <li>
+                        <a href="{% url 'auth0authentication:login' %}" class="button primary">Explore</a>
+                    </li>
+                </ul>
             </section>
-
         </div>
-                				<h1>Auth0 Example</h1>
-				{% if session %}
-    <h1>Welcome {{session.userinfo.name}}!</h1>
-    <p><a href="#">Logout</a></p>
-    <div><pre>{{pretty}}</pre></div>
-    {% else %}
-    <h1>Welcome Guest</h1>
-    <p><a href="#">Login</a></p>
-    {% endif %}
-				 Footer
     </div>
 
     <!-- Footer -->
