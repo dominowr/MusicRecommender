@@ -17,6 +17,18 @@ from dotenv import load_dotenv, find_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'auth0', 'templates')
 
+# Load Auth0 application settings into memory
+ENV_FILE = find_dotenv()
+if ENV_FILE:
+    load_dotenv(ENV_FILE)
+
+AUTH0_DOMAIN = os.environ.get('AUTH0_DOMAIN')
+AUTH0_CLIENT_ID = os.environ.get('AUTH0_CLIENT_ID')
+AUTH0_CLIENT_SECRET = os.environ.get('AUTH0_CLIENT_SECRET')
+API_AUDIENCE = os.environ.get('API_AUDIENCE')
+
+SECRET_KEY = os.environ.get('DJANGO_SECRET')
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -71,8 +83,8 @@ JWT_AUTH = {
     'JWT_DECODE_HANDLER':
         'auth0authorization.utils.jwt_decode_token',
     'JWT_ALGORITHM': 'RS256',
-    'JWT_AUDIENCE': 'https://mr-auth0/api',
-    'JWT_ISSUER': 'https://dev-a0qvv2we87klxniu.us.auth0.com/',
+    'JWT_AUDIENCE': API_AUDIENCE,
+    'JWT_ISSUER': AUTH0_DOMAIN,
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
 }
 
@@ -148,14 +160,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Load Auth0 application settings into memory
-ENV_FILE = find_dotenv()
-if ENV_FILE:
-    load_dotenv(ENV_FILE)
-
-AUTH0_DOMAIN = os.environ.get('AUTH0_DOMAIN')
-AUTH0_CLIENT_ID = os.environ.get('AUTH0_CLIENT_ID')
-AUTH0_CLIENT_SECRET = os.environ.get('AUTH0_CLIENT_SECRET')
-
-SECRET_KEY = os.environ.get('DJANGO_SECRET')
